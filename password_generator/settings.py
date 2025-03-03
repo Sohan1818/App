@@ -125,7 +125,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',  # Local development
-    'password-generator-udei.onrender.com'  # Your Render URL
+    'password-generator-7jya.onrender.com'  # Your Render URL
 ]
 
 # Default primary key field type
