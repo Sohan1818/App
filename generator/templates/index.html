@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Generator</title>
+    <style>
+        body {
+            background: url("{% static 'background.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        input, button {
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .checkbox-group {
+            text-align: left;
+            margin: 10px 0;
+        }
+        .checkbox-group input {
+            margin-right: 5px;
+        }
+        .password-box {
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .copy-btn, .about-btn {
+            margin-top: 10px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        .about-btn {
+            background: #28a745;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+        .modal button {
+            margin-top: 10px;
+            background: #dc3545;
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Generate a Password</h2>
+        <form method="post" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <label for="length">Password Length (4-32):</label>
+            <input type="number" name="length" id="length" min="4" max="32" value="8" required>
+
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="letters" checked> Include Letters</label>
+                <label><input type="checkbox" name="numbers"> Include Numbers</label>
+                <label><input type="checkbox" name="special"> Include Special Characters</label>
+            </div>
+
+            <button type="submit" class="copy-btn">Generate</button>
+
+        </form>
+
+        {% if password %}
+            <h3>Generated Password:</h3>
+            <div class="password-box" id="password">{{ password }}</div>
+            <button class="copy-btn" onclick="copyPassword()">Copy</button>
+        {% endif %}
+
+        <button class="about-btn" onclick="openModal()">About</button>
+    </div>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal">
+        <h3>About This App</h3>
+        <p><strong>Owner:</strong> Sohan Kumar Shetty</p>
+        <p><strong>App:</strong> Password Generator</p>
+        <p>This app allows users to generate secure passwords with customizable options for enhanced security.</p>
+        <p>Click "Copy" to easily copy the password to your clipboard.</p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+
+    <script>
+        function copyPassword() {
+            const passwordText = document.getElementById("password");
+            if (passwordText) {
+                navigator.clipboard.writeText(passwordText.innerText).then(() => {
+                    alert("Password copied to clipboard!");
+                });
+            }
+        }
+
+        function validateForm() {
+            let length = document.getElementById("length").value;
+            if (length < 4 || length > 32) {
+                alert("Password length must be between 4 and 32 characters.");
+                return false;
+            }
+            return true;
+        }
+
+        function openModal() {
+            document.getElementById("aboutModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("aboutModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
