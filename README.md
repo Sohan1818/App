@@ -17,7 +17,7 @@ You can access the hosted version of this app here: https://password-generator-7
 **Tech Stack**:
 
 Backend: Django (Python)    
-Frontend: HTML, CSS
+Frontend: HTML
 
 **Assumptions And Solution**
 
