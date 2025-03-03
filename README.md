@@ -48,7 +48,7 @@ If no checkboxes are selected, it automatically includes letters.
 Deployment & Hosting:
 The app is deployed for free on platform Render.
 
-I
+
 **Installation & Setup**
 
 *  Clone the Repository:
