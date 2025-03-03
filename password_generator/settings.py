@@ -118,7 +118,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'generator/static'),  # Adjust if your app has a different name
+   os.path.join(BASE_DIR, 'static')  # Adjust if your app has a different name
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEBUG = True
