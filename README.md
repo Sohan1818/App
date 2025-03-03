@@ -21,31 +21,31 @@ Frontend: HTML, CSS
 
 **Assumptions And Solution**
 
-**User Inputs:
+*  User Inputs:
 The user will enter the password length (minimum 4, maximum 32).
 Default selection includes only alphabets (Stage 1).
 User can select additional options via checkboxes (Stage 2).
 
-**Character Sets:
+*  Character Sets:
 Alphabets (A-Z, a-z) – Default selection.
 Numbers (0-9). 
 Special Characters (!@#$%^&*...).
 
-**Password Generation Logic:
+*  Password Generation Logic:
 The app will randomly pick characters based on selected checkboxes.
 The length of the password will match the user’s input.
 
-**Password Display: 
+*  Password Display: 
 The generated password is shown in a text box.
 
-**Copy to Clipboard: 
+*  Copy to Clipboard: 
 The user can click a button to copy the password.
 
-**Error Handling:
+*  Error Handling:
 If the user enters a length less than 4 or greater than 32, an error message appears.
 If no checkboxes are selected, it automatically includes letters.
 
-**Deployment & Hosting:
+*  Deployment & Hosting:
 The app is deployed for free on platform Render.
 
 
