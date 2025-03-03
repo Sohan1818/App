@@ -121,7 +121,7 @@ STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'static')  # Adjust if your app has a different name
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',  # Local development
